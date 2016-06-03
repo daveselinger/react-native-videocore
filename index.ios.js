@@ -4,8 +4,8 @@
  */
 'use strict';
 
-var React = require('react-native');
-var {
+import React from 'react';
+import {
   AppRegistry,
   StyleSheet,
   Text,
@@ -14,7 +14,7 @@ var {
   NativeModules,
   DeviceEventEmitter,
   TouchableHighlight
-} = React;
+} from 'react-native';
 
 var VideoCoreView = requireNativeComponent('RCTVideoCoreView', null);
 
