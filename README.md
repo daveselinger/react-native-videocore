@@ -17,19 +17,23 @@ All you need is to require the `react-native-videocore` module and then use the 
 
 ```javascript
 
-var React = require('react-native');
-var {
+import React from 'react';
+import {
   AppRegistry,
-  StyleSheet,
+  Stylesheet,
   Text,
   View,
   TouchableHighlight
-} = React;
+} from 'react-native';
 
 var VideoCore = require('react-native-videocore')
 
-var VideoCoreSampleApp = React.createClass({
-  render: function() {
+class VideoCoreSampleApp {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return (
       <View style={styles.container}>
         <VideoCore style={{ alignSelf: 'stretch', flex: 1 }} onConnectionStatusChanged={(e) => console.log(e)}>
@@ -39,7 +43,7 @@ var VideoCoreSampleApp = React.createClass({
       </View>
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
   container: {
@@ -85,17 +89,18 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 # See: http://guides.cocoapods.org/making/making-a-cocoapod.html#release
 # Once the pod has been released, use a version number here instead of a path.
-pod 'VideoCore', :git => 'git@github.com:phelrine/VideoCore.git', :branch => 'fixed-master'
+pod 'VideoCore', :git => 'https://github.com/phelrine/VideoCore.git', :branch => 'fixed-master'
 ```
 
 As you can see, I actually use a fork which has some bugs already fixed.
 
 #### 2. Install Cocoapods and the dependencies
-Inside `ios` folder run: `sudo gem install cocoapods -v 0.37.2 && pod _0.37.2_ install`
-Note: you must use this version because the latest versions of Cocoapods have a bug and your project won't run
+Inside `ios` folder run: `sudo gem install cocoapods && pod install`
+Note: you must use the most recent version (1.0.1 as of writing) because the originally documented versions of Cocoapod has bugs
 
 #### 3. Go to the Build Settings of your Xcode project and search for Linking
-On the Other Linker Flags, make sure you have `-ObjC` and `$(inherited)` on the list
+In the ios folder run: `rnpm link react-native-videocore`
+Open XCode and on the Other Linker Flags of your parent project, make sure you have `-ObjC` and `$(inherited)` on the list
 
 
 ## Known Issues
